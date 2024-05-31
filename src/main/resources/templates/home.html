@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OMDB Movies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d5635d350d.js" crossorigin="anonymous"></script>
+    <style>
+		
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.header {
+    height: 27vh;
+    background-color: #FDB805;
+    font-weight: bolder;
+}
+
+.header-container {
+    width: 50%;
+    padding: 20px 0px;
+    color: black;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-top: 70px;
+}
+
+.header-container h1 {
+    font-weight: bold;
+    font-size: 50px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.header-link {
+    padding-top: 25px;
+}
+
+.header-link a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    transition: color ease-in-out 0.5s;
+}
+
+.header-link a:hover {
+    color: black;
+}
+
+.search-box {
+    width: 50%;
+    margin: 0px auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    margin-top: 10px;
+    position: relative;
+    box-shadow: 1px 2px #a1a1a1;
+    display: flex;
+    flex-direction: row;
+}
+
+.search-box input {
+    margin: 0px;
+    width: 90%;
+    padding: 15px 20px;
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 4px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.search-box button {
+    margin: 0px;
+    width: 9%;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.main {
+    background-color: #e1e1e1;
+    padding: 40px;
+    min-height: 63vh;
+}
+
+.start-exploring {
+    color: #b1b1b1;
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.start-exploring span {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.movie-container {
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    box-shadow: 1px 2px #a1a1a1;
+}
+
+.movie-poster {
+    width: 50%;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-details {
+    width: 100%;
+    padding: 0px 10px 0px 20px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.details-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dh-ls {
+    width: 87%;
+}
+
+.dh-rs {
+    text-align: right;
+    width: 10%;
+    padding: 5px 0px 0px 0px;
+}
+
+.details-header h1 {
+    padding-bottom: 0px;
+}
+
+.italics-text {
+    font-size: 15px;
+    color: #555;
+}
+
+.details-ul {
+    list-style-type: none;
+    padding-left: 0px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.fav-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 53%;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.fav-item {
+    box-shadow: 1px 2px #a1a1a1;
+    margin: 0px 5px 25px 5px;
+    width: 28%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.fav-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.fav-poster img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.fav-details-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 5px 5px 0px;
+}
+
+.fav-movie-name {
+    color: black;
+    font-size: 15px;
+    margin-bottom: 0rem;
+}
+
+.fav-movie-rating {
+    color: #888;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 0rem;
+}
+.logout-button {
+    background-color: transparent;
+    color: black;
+    border: none;
+  	cursor: pointer;
+ 	font-size: 16px;
+   	padding: 10px 20px;
+    border-radius: 4px;
+   	transition: background-color 0.3s ease;
+}
+.logout-button:hover {
+   	background-color: rgba(0, 0, 0, 0.1);
+}
+	</style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-container">
+            <div>
+                <h1>Search for movies</h1>
+            </div>
+            <div class="header-link">
+                <span><a href="/favorite">Watchlist</a></span>
+                <button class="logout-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Type movie name here..." class="search-bar" id="Input">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="fav-container">
+        </div>
+        <div class="start-exploring">
+            <i class="fa-solid fa-film fa-6x"></i><br>
+            <span>Start Exploring!</span>
+        </div>
+    </div>
+    <script>
+        const key = '48aa722f';
+const apiBaseURL = '/api/movies'; 
+var searchInput = document.getElementById('Input');
+var displaySearchList = document.getElementsByClassName('fav-container');
+
+searchInput.addEventListener('input', findMovies);
+
+async function singleMovie() {
+    var urlQueryParams = new URLSearchParams(window.location.search);
+    var id = urlQueryParams.get('id');
+    const url = `https://www.omdbapi.com/?i=${id}&apikey=${key}`;
+    const res = await fetch(`${url}`);
+    const data = await res.json();
+
+    var output = `
+        <div class="movie-poster">
+            <img src=${data.Poster} alt="Movie Poster">
+        </div>
+        <div class="movie-details">
+            <div class="details-header">
+                <div class="dh-ls">
+                    <h2>${data.Title}</h2>
+                </div>
+                <div class="dh-rs">
+                    <i class="fa-solid fa-bookmark" onClick="addTofavorites('${id}')" style="cursor: pointer;"></i>
+                </div>
+            </div>
+            <span class="italics-text"><i>${data.Year} &#x2022; ${data.Country} &#x2022; Rating - <span
+                        style="font-size: 18px; font-weight: 600;">${data.imdbRating}</span>/10 </i></span>
+            <ul class="details-ul">
+                <li><strong>Actors: </strong>${data.Actors}</li>
+                <li><strong>Director: </strong>${data.Director}</li>
+                <li><strong>Writers: </strong>${data.Writer}</li>
+            </ul>
+            <ul class="details-ul">
+                <li><strong>Genre: </strong>${data.Genre}</li>
+                <li><strong>Release Date: </strong>${data.DVD}</li>
+                <li><strong>Box Office: </strong>${data.BoxOffice}</li>
+                <li><strong>Movie Runtime: </strong>${data.Runtime}</li>
+            </ul>
+            <p style="font-size: 14px; margin-top:10px;">${data.Plot}</p>
+            <p style="font-size: 15px; font-style: italic; color: #222; margin-top: 10px;">
+                <i class="fa-solid fa-award"></i>
+                &thinsp; ${data.Awards}
+            </p>
+        </div> 
+    `;
+    document.querySelector('.movie-container').innerHTML = output;
+}
+
+async function addTofavorites(id) {
+    try {
+        const url = `https://www.omdbapi.com/?i=${id}&apikey=${key}`;
+        const res = await fetch(`${url}`);
+        const data = await res.json();
+
+        const movie = {
+            imdbId: data.imdbID,
+            title: data.Title,
+            year: data.Year,
+            poster: data.Poster,
+            rating: data.imdbRating
+        };
+
+        const response = await fetch('/api/movies', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        });
+
+        if (response.ok) {
+            alert('Movie added to watchlist!');
+        } else {
+            throw new Error('Failed to add movie to watchlist');
+        }
+    } catch (error) {
+        console.error('Error adding movie to watchlist:', error);
+        alert('Failed to add movie to watchlist');
+    }
+}
+
+async function removeFromfavorites(id) {
+    try {
+        const response = await fetch(`${apiBaseURL}/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            alert('Movie Removed from Watchlist');
+            favoritesMovieLoader();
+        } else {
+            throw new Error('Failed to remove movie from Watchlist');
+        }
+    } catch (error) {
+        console.error('Error removing movie from watchlist:', error);
+        alert('Failed to remove movie from Watchlist');
+    }
+}
+
+async function displayMovieList(movies) {
+    var output = '';
+    for (const movie of movies) {
+        var img = '';
+        if (movie.Poster != 'N/A') {
+            img = movie.Poster;
+        } else {
+            img = 'img/blank-poster.webp';
+        }
+        var id = movie.imdbID;
+        output += `
+            <div class="fav-item">
+                <div class="fav-poster">
+                    <a href="/movie?id=${id}"><img src=${img} alt="Favourites Poster"></a>
+                </div>
+                <div class="fav-details">
+                    <div class="fav-details-box">
+                        <div>
+                            <p class="fav-movie-name"><a href="/movie?id=${id}">${movie.Title}</a></p>
+                            <p class="fav-movie-rating"><a href="/movie?id=${id}">${movie.Year}</a></p>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-bookmark" style="cursor:pointer;" onClick="addTofavorites('${id}')"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    document.querySelector('.fav-container').innerHTML = output;
+}
+
+async function findMovies() {
+    const url = `https://www.omdbapi.com/?s=${(searchInput.value).trim()}&page=1&apikey=${key}`;
+    const res = await fetch(`${url}`);
+    const data = await res.json();
+
+    if (data.Search) {
+        displayMovieList(data.Search);
+    }
+}
+function logout() {
+            window.location.href = '/logout';
+        }
+    </script>
+</body>
+
+</html>
