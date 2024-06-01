@@ -12,9 +12,6 @@
             margin: 0;
             box-sizing: border-box;
         }
-        body {
-            background-image: url("background.png");
-        }
         input {
             background-color: transparent;
         }
@@ -34,7 +31,6 @@
 <body>
     <div class="d-flex justify-content-center align-items-center w-100 vh-100">
         <div class="rounded d-flex shadow">
-            <img class="poster" src="film.jpg" />
             <form method="post" role="form" th:action="@{/register}" th:object="${user}" novalidate class="d-flex flex-column mx-3 gap-2 justify-content-center" style="min-width: 400px" id="registrationForm">
                 <div class="form-group">
                     <input type="text" th:field="*{username}" style="background-color: transparent; border: 1px solid black" class="form-control p-3" id="username" aria-describedby="usernameHelp" placeholder="User Name" />

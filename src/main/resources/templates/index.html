@@ -12,9 +12,6 @@
             margin: 0;
             box-sizing: border-box;
         }
-        body {
-            background-image: url("background.png");
-        }
         input {
             background-color: transparent;
         }
@@ -38,7 +35,6 @@
 <body>
     <div class="d-flex justify-content-center align-items-center w-100 vh-100">
         <div class="rounded d-flex shadow">
-            <img class="poster" src="film.jpg" />
             <form class="d-flex flex-column mx-3 gap-2 justify-content-center" style="min-width: 400px;" method="post" th:action="@{/index}" th:object="${user}" onsubmit="return validateForm()" novalidate>
                 <h1 style="text-align: center;">Welcome!</h1>
                 <div class="form-group">
